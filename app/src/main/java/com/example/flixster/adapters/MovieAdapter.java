@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -92,7 +93,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 // else imageUrl = poster image
                 imageUrl = movie.getPosterPath();
             }
-            Glide.with(context).load(imageUrl).into(ivPoster);
+            Glide.with(context)
+                    .load(imageUrl)
+                    .placeholder(Drawable.createFromPath("http://via.placeholder.com/300.png"))
+                    .into(ivPoster);
 
             // 1. Register click listener on the whole row
             container.setOnClickListener(new View.OnClickListener() {
